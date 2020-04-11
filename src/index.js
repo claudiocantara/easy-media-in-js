@@ -49,6 +49,8 @@ const unSerializeString = medias => {
 }
 
 const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
+  if( typeof rule != 'number') throw new Error(`Your rule ${rule} must be a Number.`);
+
   if (array.length === 1) return `(min-width: ${sizes[rule]}px)`
 
   if (rgxConditions.test(rule)) {
