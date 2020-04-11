@@ -1,7 +1,7 @@
 {
   "name": "easy-media-in-js",
   "version": "1.0.0",
-  "description": "It's a simple way to use media query in your project ",
+  "description": "It's a simple way to use media query in your CSS-in-js project.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -21,5 +21,9 @@
     "babel-loader": "^8.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudiocantara/easy-media-in-js.git"
   }
 }
