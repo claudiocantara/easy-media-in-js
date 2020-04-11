@@ -75,7 +75,7 @@ const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
 };
 
 const serializeMediaQuery = (accumulator, currentValue, index, array) => {
-  console.log(accumulator, currentValue);
+  
   if (array.length <= 2) return accumulator + currentValue;
 
   const isFirstValue = index == 0 && /px/g.test(currentValue);
