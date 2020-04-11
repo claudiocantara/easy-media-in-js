@@ -49,14 +49,18 @@ const unSerializeString = medias => {
 }
 
 const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
-  if( typeof sizes[rule] != 'number') throw new Error(`Your rule ${rule} with value ${sizes[rule]} must be a Number.`);
+  const isCondition = rgxConditions.test(rule);
+  if( !isCondition && typeof sizes[rule] != 'number' ) throw new Error(`Your rule ${rule} with value ${sizes[rule]} must be a Number.`);
 
-  if (array.length === 1) return `(min-width: ${sizes[rule]}px)`
+  if (array.length === 1) return `(min-width: ${sizes[rule]}px)`;
+  
 
-  if (rgxConditions.test(rule)) {
+  if (isCondition) {
     previosWasEquals.value = /=/g.test(rule)
     return />/g.test(rule) ? "(min-width: " : "(max-width: "
   }
+
+
   const lastRule = previosWasEquals.value
     ? `${sizes[rule] - 1}px)`
     : `${sizes[rule]}px)`
@@ -67,8 +71,9 @@ const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
 }
 
 const serializeMediaQuery = (accumulator, currentValue, index, array) => {
+  console.log(accumulator, currentValue);
   if (array.length <= 2) return accumulator + currentValue
-
+  
   const isFirstValue = index == 0 && /px/g.test(currentValue)
   const isCondition = /-/g.test(currentValue)
   const arrayLength = array.length - 1
