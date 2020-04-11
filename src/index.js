@@ -5,7 +5,11 @@ let sizes = {
   desktop: 1280,
   largeDesktop: 1440
 }
-const rgxMediaRules = /(^(small|phone|tablet|desktop|largeDesktop) ([<=|>=|>|< small|phone|tablet|desktop|largeDesktop <=|>=|>|<]+) (small|phone|tablet|desktop|largeDesktop)$|(^(<=|>=|>|<) (small|phone|tablet|desktop|largeDesktop)$)|(^(small|phone|tablet|desktop|largeDesktop)$))/g
+
+const sizesNames = Object.keys(sizes).join('|');
+
+const rgxMediaRules = new RegExp(`(^(${sizesNames}) ([<=|>=|>|< ${sizesNames} <=|>=|>|<]+) (${sizesNames})$|(^(<=|>=|>|<) (${sizesNames})$)|(^(${sizesNames})$))`, 'g')
+
 const rgxConditions = /<=|>=|>|</g
 
 const validateParam = media => {
