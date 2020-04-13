@@ -14,7 +14,6 @@ const Sizes = {
 }
 
 const rgxMediaRules = () => {
-  console.log(Sizes.getSizes())
   const sizeNames = Object.keys(Sizes.getSizes()).join("|");
   
   return new RegExp(
