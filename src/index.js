@@ -1,17 +1,27 @@
-let sizes = {
-  smallPhone: 300,
-  phone: 600,
-  tablet: 960,
-  desktop: 1280,
-  largeDesktop: 1600,
-};
 
-const sizesNames = Object.keys(sizes).join("|");
 
-const rgxMediaRules = new RegExp(
-  `(^(${sizesNames}) ([<=|>=|>|< ${sizesNames} <=|>=|>|<]+) (${sizesNames})$|(^(<=|>=|>|<) (${sizesNames})$)|(^(${sizesNames})$))`,
-  "g"
-);
+const Sizes = {
+  defaultSizes: {
+    smallPhone: 300,
+    phone: 600,
+    tablet: 960,
+    desktop: 1280,
+    largeDesktop: 1600
+  },
+  sizes: function() { return this.defaultSizes } ,
+  getSizes: function() { return this.sizes },
+  setSizes: function(newSizes) { this.sizes = { ...this.defaultSizes, ...newSizes} }
+}
+
+const rgxMediaRules = () => {
+  console.log(Sizes.getSizes())
+  const sizeNames = Object.keys(Sizes.getSizes()).join("|");
+  
+  return new RegExp(
+    `(^(${sizeNames}) ([<=|>=|>|< ${sizeNames} <=|>=|>|<]+) (${sizeNames})$|(^(<=|>=|>|<) (${sizeNames})$)|(^(${sizeNames})$))`,
+    "g"
+    );
+}
 
 const rgxConditions = /<=|>=|>|</g;
 
@@ -24,7 +34,7 @@ const validateParam = (media) => {
   if (!media.trim().length)
     throw new Error("Your string is empty, please provide a valid query");
   // TODO point to documentation
-  if (!rgxMediaRules.test(media.trim()))
+  if (!rgxMediaRules().test(media.trim()))
     throw new Error(
       "Your media query rule seems not match with a valid pattern, please provide a valid query!"
     );
@@ -42,7 +52,7 @@ const validateParam = (media) => {
 };
 
 const unSerializeString = (medias) => {
-  const mediaRules = medias.trim().match(rgxMediaRules)[0];
+  const mediaRules = medias.trim().match(rgxMediaRules())[0];
   let previosWasEquals = { value: false };
 
   return mediaRules
@@ -53,12 +63,12 @@ const unSerializeString = (medias) => {
 
 const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
   const isCondition = rgxConditions.test(rule);
-  if (!isCondition && typeof sizes[rule] != "number")
+  if (!isCondition && typeof Sizes.getSizes()[rule] != "number")
     throw new Error(
-      `Your rule ${rule} with value ${sizes[rule]} must be a Number.`
+      `Your rule ${rule} with value ${Sizes.getSizes()[rule]} must be a Number.`
     );
 
-  if (array.length === 1) return `(min-width: ${sizes[rule]}px)`;
+  if (array.length === 1) return `(min-width: ${Sizes.getSizes()[rule]}px)`;
 
   if (isCondition) {
     previosWasEquals.value = /=/g.test(rule);
@@ -66,8 +76,8 @@ const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
   }
 
   const lastRule = previosWasEquals.value
-    ? `${sizes[rule] - 1}px)`
-    : `${sizes[rule]}px)`;
+    ? `${Sizes.getSizes()[rule] - 1}px)`
+    : `${Sizes.getSizes()[rule]}px)`;
 
   previosWasEquals.value = false;
 
@@ -92,7 +102,8 @@ const serializeMediaQuery = (accumulator, currentValue, index, array) => {
 };
 
 const setSizes = (newSizes) => {
-  sizes = newSizes;
+  if( newSizes && typeof newSizes === 'object' && newSizes.constructor !== Object ) throw new Error(`Your parameter must be a Object, try to fix it.`);
+  Sizes.setSizes(newSizes);
 };
 
 const useMedia = (media) => {
