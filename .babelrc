@@ -1,5 +1,14 @@
 {
   "presets": [
-    "@babel/preset-env"
+    "minify",
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "8.16"
+      },
+      "modules": "cjs"
+    }]
+   ],
+  "plugins": [
+    "@babel/plugin-transform-modules-commonjs"
   ]
 }
