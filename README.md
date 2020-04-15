@@ -7,9 +7,9 @@
 [👀 Demo Sandbox](https://codesandbox.io/s/easy-css-in-js-cgidd)
 
 ## Descrition
-Working with media query can be a mess, to solve thois problem I created this small library based on the ideas included in the  Google's Material Design design system, in an effort to handle the most common breakpoint sizes. This library works exclusively with CSS-in-JS solutions, such as Emotion and Styled Components.
+Working with media queries can be a mess, to solve the problem I created this small library based on the ideas included in the  Google's Material Design Design system, in an effort to handle the most common breakpoint sizes. This library works exclusively with CSS-in-JS solutions, such as Emotion and Styled Components.
 
-This imagem show the possible breakpoints.
+This image shows the some possible breakpoints based on real devices.
 
 <img srcset="https://miro.medium.com/max/552/1*AyDtnhKNPvTsHMESCSqprw.png 276w, https://miro.medium.com/max/1104/1*AyDtnhKNPvTsHMESCSqprw.png 552w, https://miro.medium.com/max/1280/1*AyDtnhKNPvTsHMESCSqprw.png 640w, https://miro.medium.com/max/1456/1*AyDtnhKNPvTsHMESCSqprw.png 728w, https://miro.medium.com/max/1632/1*AyDtnhKNPvTsHMESCSqprw.png 816w, https://miro.medium.com/max/1808/1*AyDtnhKNPvTsHMESCSqprw.png 904w, https://miro.medium.com/max/1984/1*AyDtnhKNPvTsHMESCSqprw.png 992w, https://miro.medium.com/max/2000/1*AyDtnhKNPvTsHMESCSqprw.png 1000w" sizes="1000px" role="presentation" src="https://miro.medium.com/max/1920/1*AyDtnhKNPvTsHMESCSqprw.png">
 
