@@ -7,13 +7,13 @@
 [👀 Demo Sandbox](https://codesandbox.io/s/easy-css-in-js-cgidd)
 
 ## Descrition
-> Everybody knows that works with media query could be a mess, there have a lot possibilites of breakpoints, thinking in this and after study the material design of google i created this library to help to handle with most common breakpoint sizes. This library works with CSS-in-JS such as Emotion and Styled Components.
+Working with media query can be a mess, to solve thois problem I created this small library based on the ideas included in the  Google's Material Design design system, in an effort to handle the most common breakpoint sizes. This library works exclusively with CSS-in-JS solutions, such as Emotion and Styled Components.
 
-This imagem show the possibilties of breakpoints.
+This imagem show the possible breakpoints.
 
 <img srcset="https://miro.medium.com/max/552/1*AyDtnhKNPvTsHMESCSqprw.png 276w, https://miro.medium.com/max/1104/1*AyDtnhKNPvTsHMESCSqprw.png 552w, https://miro.medium.com/max/1280/1*AyDtnhKNPvTsHMESCSqprw.png 640w, https://miro.medium.com/max/1456/1*AyDtnhKNPvTsHMESCSqprw.png 728w, https://miro.medium.com/max/1632/1*AyDtnhKNPvTsHMESCSqprw.png 816w, https://miro.medium.com/max/1808/1*AyDtnhKNPvTsHMESCSqprw.png 904w, https://miro.medium.com/max/1984/1*AyDtnhKNPvTsHMESCSqprw.png 992w, https://miro.medium.com/max/2000/1*AyDtnhKNPvTsHMESCSqprw.png 1000w" sizes="1000px" role="presentation" src="https://miro.medium.com/max/1920/1*AyDtnhKNPvTsHMESCSqprw.png">
 
-Well, it's imposible use all of it. Based in this guide i chosen the most importants breakpoints:
+Well, it's imposible to cover all the the use cases. Based on this guide a few widely used breakpoints were chosen:
 
 ```js
 const sizes = {
@@ -36,7 +36,7 @@ import styled from '@emotion/styled';
 import styled from 'styled-components';
 
 setSites({
-  smallPhone: 300, // To Handle with phones like Iphone 5S
+  smallPhone: 300, // To Handle phones like Iphone 5S
   phone: 600,
   tablet: 960,
   desktop: 1280, 
@@ -44,7 +44,7 @@ setSites({
   customBreakpoint: 1800
 })
 
-// and use it: 
+// and use it like this: 
 
 const Element = styled.div`
   ${useMedia('customBreapoint')} {
