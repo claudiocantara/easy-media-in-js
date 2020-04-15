@@ -1,10 +1,10 @@
 {
   "name": "easy-media-in-js",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "It's a simple way to use media query in your CSS-in-js project.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --progress --colors --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

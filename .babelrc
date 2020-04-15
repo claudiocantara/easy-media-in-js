@@ -3,12 +3,9 @@
     "minify",
     ["@babel/preset-env", {
       "targets": {
-        "node": "8.16"
+        "node": "10"
       },
       "modules": "cjs"
     }]
-   ],
-  "plugins": [
-    "@babel/plugin-transform-modules-commonjs"
-  ]
+   ]
 }
