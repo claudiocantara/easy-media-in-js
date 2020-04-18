@@ -1,11 +1,13 @@
 {
   "presets": [
-    "minify",
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "10"
-      },
-      "modules": "cjs"
-    }]
-   ]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "10"
+        },
+        "loose": true
+      }
+    ],
+  ]
 }

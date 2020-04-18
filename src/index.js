@@ -27,7 +27,6 @@ const Sizes = {
 
 const rgxMediaRules = () => {
   const sizeNames = Object.keys(Sizes.getSizes()).join("|");
-
   return new RegExp(
     `(^(${sizeNames}) ([<=|>=|>|< ${sizeNames} <=|>=|>|<]+) (${sizeNames})$|(^(<=|>=|>|<) (${sizeNames})$)|(^(${sizeNames})$))`,
     "g"
@@ -35,27 +34,10 @@ const rgxMediaRules = () => {
 };
 
 const validateParam = (media) => {
-  if (typeof media !== "string")
-    throw new Error(
-      `Invalid parameter, provide a string instead ${typeof media}`
-    );
-  if (!media.trim().length)
-    throw new Error("Your string is empty, please provide a valid query");
   if (!rgxMediaRules().test(media.trim()))
     throw new Error(
       "Your media query rule seems not match with a valid pattern, please provide a valid query! https://github.com/claudiocantara/easy-media-in-js#possibilities"
     );
-
-  media
-    .trim()
-    .split(" ")
-    .reduce((accumulator, currentValue) => {
-      if (accumulator === "" && accumulator === currentValue)
-        throw new Error(
-          "Your string has extra spaces between words, please fix it."
-        );
-      return currentValue;
-    });
 };
 
 const unSerializeString = (medias) => {
@@ -78,7 +60,7 @@ const mapMediaQuery = (previosWasEquals, rule, _index, array) => {
 };
 
 const validateRule = (rule, isCondition) => {
-
+  if (!isCondition && rule === "") throw new Error("Your string has empty spaces");
   if (!isCondition && typeof Sizes.getSizes()[rule] != "number")
     throw new Error(
       `Your rule ${rule} with value ${Sizes.getSizes()[rule]} must be a Number.`
