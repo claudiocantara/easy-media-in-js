@@ -11,7 +11,6 @@ const rgxMediaRules = () => {
 };
 
 const validateParam = (media) => {
-  console.log(media, rgxMediaRules() )
   if (!rgxMediaRules().test(media.trim()))
     throw new Error(
       "Your media query rule seems not match with a valid pattern, please provide a valid query! https://github.com/claudiocantara/easy-media-in-js#possibilities"
