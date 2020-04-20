@@ -1,31 +1,8 @@
-const Sizes = {
-  defaultSizes: {
-    smallPhone: 300,
-    phone: 600,
-    tablet: 960,
-    desktop: 1280,
-    largeDesktop: 1600,
-  },
-  sizes: function () {
-    return this.defaultSizes;
-  },
-  getSizes: function () {
-    return this.sizes;
-  },
-  setSizes: function (newSizes) {
-    this.validateSizes();
-    this.sizes = { ...this.defaultSizes, ...newSizes };
-  },
-  validateSizes: function (newSizes) {   
-    if (
-    newSizes &&
-    typeof newSizes === "object" &&
-    newSizes.constructor !== Object
-  )
-    throw new Error(`Your parameter must be a Object, try to fix it.`);}
-};
+import breakpoints from "./sizes";
+const Sizes = new breakpoints();
 
 const rgxMediaRules = () => {
+ 
   const sizeNames = Object.keys(Sizes.getSizes()).join("|");
   return new RegExp(
     `(^(${sizeNames}) ([<=|>=|>|< ${sizeNames} <=|>=|>|<]+) (${sizeNames})$|(^(<=|>=|>|<) (${sizeNames})$)|(^(${sizeNames})$))`,
@@ -34,6 +11,7 @@ const rgxMediaRules = () => {
 };
 
 const validateParam = (media) => {
+  console.log(media, rgxMediaRules() )
   if (!rgxMediaRules().test(media.trim()))
     throw new Error(
       "Your media query rule seems not match with a valid pattern, please provide a valid query! https://github.com/claudiocantara/easy-media-in-js#possibilities"
@@ -112,7 +90,7 @@ const useMedia = (media) => {
   const mediaQuery = unSerializeString(media);
 
   return mediaQuery;
-};
+}; 
 
 export default useMedia;
 export { setSizes };
