@@ -1,11 +1,16 @@
 {
   "name": "easy-media-in-js",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "It's a simple way to use media query in your CSS-in-js project.",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "webpack --progress --colors --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "yarn rollup -c",
+    "prebuild": "rimraf dist",
+    "watch": "rollup -c -w"
   },
   "keywords": [
     "emotion",
@@ -15,16 +20,17 @@
   ],
   "author": "Claudio Alcantara",
   "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-loader": "^8.1.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/claudiocantara/easy-media-in-js.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "rollup": "^2.34.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
