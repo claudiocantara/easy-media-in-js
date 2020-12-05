@@ -13,6 +13,7 @@
     "watch": "rollup -c -w"
   },
   "keywords": [
+    
     "emotion",
     "styled-components",
     "media-query",

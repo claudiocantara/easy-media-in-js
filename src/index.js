@@ -91,5 +91,4 @@ const useMedia = (media) => {
   return mediaQuery;
 }; 
 
-export default useMedia;
-export { setSizes };
+export { setSizes, useMedia };
