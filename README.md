@@ -1,8 +1,7 @@
 # `Easy Media In Js`
 
 [![npm version](https://badge.fury.io/js/easy-media-in-js.svg)](https://badge.fury.io/js/easy-media-in-js)
-![core size](https://img.shields.io/bundlephobia/min/easy-media-in-js?label=core%20size)
-![core gzip size](https://img.shields.io/bundlephobia/minzip/easy-media-in-js.svg?label=core%20gzip%20size)
+![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/easy-media-in-js/1.0.20)
 
 ## Demo
 
